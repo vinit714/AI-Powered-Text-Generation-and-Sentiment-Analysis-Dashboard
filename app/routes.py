@@ -3,6 +3,10 @@ from app import app
 from app.forms import AnalysisForm
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.tokenize import word_tokenize
+import gpt_2_simple as gpt2
+
+# Download the GPT-2 model (only need to run this once)
+gpt2.download_gpt2(model_name="124M")
 
 @app.route('/')
 def index():
@@ -14,11 +18,11 @@ def analyze():
     form = AnalysisForm()
     if form.validate_on_submit():
         text = form.text.data  # Get the text input from the form
-        sentiment, sentiment_scores, major_words = analyze_sentiment(text)  # Perform sentiment analysis
-        return render_template('result.html', text=text, sentiment=sentiment, sentiment_scores=sentiment_scores, major_words=major_words)
+        sentiment, sentiment_scores, major_words, generated_text = analyze_text(text)
+        return render_template('result.html', text=text, sentiment=sentiment, sentiment_scores=sentiment_scores, major_words=major_words, generated_text=generated_text)
     return render_template('index.html', form=form)
 
-def analyze_sentiment(text):
+def analyze_text(text):
     sid = SentimentIntensityAnalyzer()
     scores = sid.polarity_scores(text)
     
@@ -28,7 +32,6 @@ def analyze_sentiment(text):
     positive_words = []
     negative_words = []
     neutral_words = []
-    
 
     for word in words:
         word_score = sid.polarity_scores(word)
@@ -38,7 +41,6 @@ def analyze_sentiment(text):
             negative_words.append(word)
         else:
             neutral_words.append(word)
-    
 
     major_words = {
         'Positive': positive_words,
@@ -46,7 +48,10 @@ def analyze_sentiment(text):
         'Neutral': neutral_words
     }
     
-    # overall sentiment
+    # Text generation using GPT-2
+    generated_text = gpt2.generate(sess=None, model_name='124M', prefix=text, length=100, return_as_list=True)[0]
+    
+    # Overall sentiment
     if scores['compound'] >= 0.05:
         sentiment = 'Positive'
     elif scores['compound'] <= -0.05:
@@ -54,4 +59,4 @@ def analyze_sentiment(text):
     else:
         sentiment = 'Neutral'
     
-    return sentiment, scores, major_words
+    return sentiment, scores, major_words, generated_text
