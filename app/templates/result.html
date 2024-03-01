@@ -33,9 +33,11 @@
         
         <h3>Negative Words:</h3>
         <p>[{{ major_words['Negative'] | join(', ') }}]</p>
+
+        <h3>Generated Text:</h3>
+        <p>{{ generated_text }}</p>
         
-        
-        <!-- button to go back to the start page -->
+        <!-- go back to the start page -->
         <a href="{{ url_for('index') }}"><button>Go Back</button></a>
     </div>
 </body>
