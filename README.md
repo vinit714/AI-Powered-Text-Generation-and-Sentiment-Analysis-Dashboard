@@ -37,14 +37,18 @@ This Flask web application performs text sentiment analysis and text generation 
     ```bash
     python -m nltk.downloader vader_lexicon
     ```
+    and
+   ```bash
+   python -m nltk.downloader reuters
+   ```
 
-4. Run the application:
+5. Run the application:
 
     ```bash
     python run.py
     ```
 
-5. Access the application in your web browser at [http://localhost:5000](http://localhost:5000).
+6. Access the application in your web browser at [http://localhost:5000](http://localhost:5000).
 
 ## Usage
 
