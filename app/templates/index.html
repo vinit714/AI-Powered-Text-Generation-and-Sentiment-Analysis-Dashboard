@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="{{ url_for('analyze') }}">
+    {{ form.csrf_token }}
+    {{ form.text.label }}<br>
+    {{ form.text(rows=10, cols=50) }}<br>
+    {{ form.submit() }}
+</form>
+{% endblock %}
