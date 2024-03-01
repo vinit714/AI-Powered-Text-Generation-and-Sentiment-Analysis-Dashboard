@@ -4,12 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Text Sentiment Analysis Result</h1>
-    <p><strong>Input Text:</strong> {{ text }}</p>
-    <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+    <div class="container">
+        <h1>Text Sentiment Analysis Result</h1>
+        <p><strong>Input Text:</strong> {{ text }}</p>
+        <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+        
+        <!-- sentiment analysis factors -->
+        <h2>Factors Considered in Sentiment Analysis:</h2>
+        <ul>
+            <li>Positive Score: {{ sentiment_scores.pos }}</li>
+            <li>Negative Score: {{ sentiment_scores.neg }}</li>
+            <li>Neutral Score: {{ sentiment_scores.neu }}</li>
+            <li>Compound Score: {{ sentiment_scores.compound }}</li>
+        </ul>
 
-    <a href="{{ url_for('index') }}"><button>Go Back</button></a>
+        <p>
+            The sentiment analysis result is based on the compound score calculated by the Vader sentiment analysis tool.
+            A compound score above 0.05 indicates a positive sentiment, while a score below -0.05 indicates a negative sentiment.
+            Scores between -0.05 and 0.05 are considered neutral.
+        </p>
+
+        <h2>Major Words Contributing to Sentiment:</h2>
+        <h3>Positive Words:</h3>
+        <p>[{{ major_words['Positive'] | join(', ') }}]</p>
+        
+        <h3>Negative Words:</h3>
+        <p>[{{ major_words['Negative'] | join(', ') }}]</p>
+        
+        
+        <!-- button to go back to the start page -->
+        <a href="{{ url_for('index') }}"><button>Go Back</button></a>
+    </div>
 </body>
 </html>
