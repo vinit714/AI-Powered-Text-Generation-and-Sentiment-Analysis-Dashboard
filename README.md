@@ -31,14 +31,19 @@ This project is a web application that utilizes AI models for text generation an
     ```bash
     pip install -r requirements.txt
     ```
+    
+3. run the NLTK download command to download the vader_lexicon resource:
+    ```bash
+    python -m nltk.downloader vader_lexicon
+    ```
 
-3. Run the application:
+4. Run the application:
 
     ```bash
     python run.py
     ```
 
-4. Access the application in your web browser at [http://localhost:5000](http://localhost:5000).
+5. Access the application in your web browser at [http://localhost:5000](http://localhost:5000).
 
 ## Usage
 
