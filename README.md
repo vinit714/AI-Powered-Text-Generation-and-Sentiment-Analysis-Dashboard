@@ -23,7 +23,7 @@ This project is a web application that utilizes AI models for text generation an
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/AI-Powered-Text-Generation-and-Sentiment-Analysis-Dashboard.git
+    git clone https://github.com/vinit714/AI-Powered-Text-Generation-and-Sentiment-Analysis-Dashboard.git
     ```
 
 2. Install dependencies:
