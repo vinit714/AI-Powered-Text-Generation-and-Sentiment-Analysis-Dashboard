@@ -1,20 +1,21 @@
 # AI-Powered Text Generation and Sentiment Analysis Dashboard
 
-This project is a web application that utilizes AI models for text generation and sentiment analysis. It provides users with the ability to analyze the sentiment of input text and generate new text based on user prompts.
+This Flask web application performs text sentiment analysis and text generation based on user input. Users can input text, and the application will analyze its sentiment using NLTK's Vader sentiment analysis tool and generate additional text using the GPT-2 model.
 
 ## Features
 
-- **Sentiment Analysis**: Analyze the sentiment of input text using natural language processing techniques.
-- **Text Generation**: Generate new text based on user-provided prompts using AI-powered models.
-- **Web Interface**: User-friendly web interface for inputting text and viewing analysis results.
-- **Interactive Visualization**: Visualize sentiment analysis results and major factors contributing to sentiment.
+- Input text for sentiment analysis.
+- Perform sentiment analysis using NLTK's Vader sentiment analysis tool.
+- Generate additional text based on the input text using the GPT-2 model.
+- View sentiment analysis results along with the input text and generated text.
+- Navigation back to the input page from the result page.
 
 ## Technologies Used
 
 - **Python**: Backend development and text analysis.
 - **Flask**: Web framework for building the application.
 - **NLTK (Natural Language Toolkit)**: Library for natural language processing tasks such as sentiment analysis.
-- **Hugging Face Transformers**: Library for accessing pre-trained natural language processing models for text generation.
+- **Hugging Face Transformers**: Library for accessing pre-trained natural language processing models for text generation, including GPT-2.
 - **HTML/CSS**: Frontend development for web interface and styling.
 - **Bootstrap**: Frontend framework for responsive design and layout.
 
@@ -47,9 +48,11 @@ This project is a web application that utilizes AI models for text generation an
 
 ## Usage
 
-1. Enter the text you want to analyze or use as a prompt for text generation.
-2. Click the submit button to perform sentiment analysis or text generation.
-3. View the results, including sentiment analysis scores and major words contributing to sentiment.
+1. Navigate to the home page.
+2. Enter text into the provided form.
+3. Submit the form for sentiment analysis and text generation.
+4. View the sentiment analysis results and additional generated text on the result page.
+5. Use the provided button to navigate back to the input page.
 
 ## Contributing
 
